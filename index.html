@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Óticas Avelar - Sistema de Gestão</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Dashboard Principal (sem login) -->
+    <div id="dashboard-screen" class="screen active">
+        <header class="header">
+            <div class="header-left">
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="header-logo">
+                    <div class="logo-fallback">
+                        <i class="fas fa-glasses"></i>
+                    </div>
+                    <h1>Óticas Avelar</h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-menu">
+                    <span id="user-name">Sistema de Gestão</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <nav class="sidebar">
+                <ul class="nav-menu">
+                    <li class="nav-item active" data-module="dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="nav-item" data-module="clientes">
+                        <i class="fas fa-users"></i>
+                        <span>Clientes</span>
+                    </li>
+                    <li class="nav-item" data-module="vendas">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Vendas</span>
+                    </li>
+                    <li class="nav-item" data-module="estoque">
+                        <i class="fas fa-boxes"></i>
+                        <span>Estoque</span>
+                    </li>
+                    <li class="nav-item" data-module="financeiro">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Financeiro</span>
+                    </li>
+                    <li class="nav-item" data-module="receitas">
+                        <i class="fas fa-file-medical"></i>
+                        <span>Receitas</span>
+                    </li>
+                    <li class="nav-item" data-module="laboratorio">
+                        <i class="fas fa-microscope"></i>
+                        <span>Laboratório</span>
+                    </li>
+                    <li class="nav-item" data-module="relatorios">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Relatórios</span>
+                    </li>
+                </ul>
+            </nav>
+
+            <main class="content">
+                <div id="module-content">
+                    <!-- Conteúdo será carregado aqui -->
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
