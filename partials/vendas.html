@@ -1,0 +1,46 @@
+<div class="module-header">
+    <h2>🛍️ Sistema de Vendas (PDV)</h2>
+    <p>Ponto de Venda - Óticas Avelar</p>
+</div>
+
+<div class="pdv-container">
+    <div class="pdv-layout">
+        <div class="pdv-painel-produtos">
+            <div class="painel-header">
+                <h3>Produtos</h3>
+                <div class="busca-produto">
+                    <input type="text" id="busca-produto" placeholder="Buscar produto...">
+                </div>
+            </div>
+            <div id="resultados-busca" class="resultados-busca">
+                <div class="empty-state">Digite para buscar produtos</div>
+            </div>
+        </div>
+
+        <div class="pdv-carrinho">
+            <div class="carrinho-header">
+                <h3>Carrinho de Vendas</h3>
+                <button class="btn btn-success" id="btn-finalizar-venda">
+                    <i class="fas fa-check"></i> Finalizar Venda
+                </button>
+            </div>
+            
+            <div id="carrinho-itens" class="carrinho-itens">
+                <div class="empty-state">Carrinho vazio</div>
+            </div>
+            
+            <div class="carrinho-total">
+                <strong>Total: <span id="total-venda">R$ 0,00</span></strong>
+            </div>
+
+            <div class="carrinho-acoes">
+                <button class="btn btn-primary" id="btn-add-produto">
+                    <i class="fas fa-plus"></i> Adicionar Produto
+                </button>
+                <button class="btn btn-warning" onclick="vendasManager.limparCarrinho()">
+                    <i class="fas fa-trash"></i> Limpar Carrinho
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

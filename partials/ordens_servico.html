@@ -1,0 +1,43 @@
+<div class="module-header">
+    <h2>🛠️ Ordens de Serviço (Laboratório)</h2>
+    <p>Gerenciamento e acompanhamento de serviços de laboratório</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Ordens em Andamento</h3>
+        <div class="header-actions">
+            <select id="filtro-status-os" style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; margin-right: 10px;">
+                <option value="todos">Todos Status</option>
+                <option value="recebimento">Recebida</option>
+                <option value="montagem">Em Montagem</option>
+                <option value="controle_qualidade">Controle de Qualidade</option>
+                <option value="pronto">Pronta</option>
+            </select>
+            <button class="btn btn-primary" id="btn-nova-os">
+                <i class="fas fa-plus"></i> Nova OS
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>OS/Cliente</th>
+                        <th>Serviço</th>
+                        <th>Progresso</th>
+                        <th>Prazo</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="ordens-servico-body">
+                    <tr>
+                        <td colspan="6" class="text-center">Carregando ordens de serviço...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

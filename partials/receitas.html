@@ -1,0 +1,38 @@
+<div class="module-header">
+    <h2>👓 Controle de Receitas Oftalmológicas</h2>
+    <p>Cadastro e gerenciamento de receitas médicas</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Receitas Cadastradas</h3>
+        <div class="header-actions">
+            <select id="filtro-cliente" style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; margin-right: 10px;">
+                <option value="todos">Todos os Clientes</option>
+            </select>
+            <button class="btn btn-primary" id="btn-nova-receita">
+                <i class="fas fa-plus"></i> Nova Receita
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Grau</th>
+                        <th>Médico</th>
+                        <th>Validade</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="receitas-table-body">
+                    <tr>
+                        <td colspan="5" class="text-center">Carregando receitas...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

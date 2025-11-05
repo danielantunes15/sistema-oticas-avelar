@@ -8,7 +8,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Dashboard Principal (sem login) -->
     <div id="dashboard-screen" class="screen active">
         <header class="header">
             <div class="header-left">
@@ -63,6 +62,18 @@
                         <i class="fas fa-microscope"></i>
                         <span>Laboratório</span>
                     </li>
+                    <li class="nav-item" data-module="produtos_especializados">
+                        <i class="fas fa-glasses"></i>
+                        <span>Produtos</span>
+                    </li>
+                    <li class="nav-item" data-module="ordens_servico">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Ordens de Serviço</span>
+                    </li>
+                    <li class="nav-item" data-module="etapas_os">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Etapas O.S.</span>
+                    </li>
                     <li class="nav-item" data-module="relatorios">
                         <i class="fas fa-chart-bar"></i>
                         <span>Relatórios</span>
@@ -72,14 +83,15 @@
 
             <main class="content">
                 <div id="module-content">
-                    <!-- Conteúdo será carregado aqui -->
-                </div>
+                    </div>
             </main>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src="js/supabase.js"></script>
+    
     <script src="js/dashboard.js"></script>
-</body>
+
+    </body>
 </html>

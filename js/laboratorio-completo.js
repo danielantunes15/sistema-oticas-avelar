@@ -46,7 +46,18 @@ class LaboratorioCompletoManager {
                 .limit(50);
 
             if (error) throw error;
-            this.renderOrdensServicoTable(ordens);
+            
+            // Renderiza a tabela se o elemento estiver presente (página Ordens de Serviço)
+            const isTableView = document.getElementById('ordens-servico-body');
+            if (isTableView) {
+                this.renderOrdensServicoTable(ordens);
+            }
+            
+            // Renderiza o Kanban se o elemento estiver presente (página Etapas O.S.)
+            const isKanbanView = document.getElementById('kanban-os');
+            if (isKanbanView) {
+                this.renderKanbanOS(ordens);
+            }
 
         } catch (error) {
             console.error('Erro ao carregar ordens de serviço:', error);
@@ -380,7 +391,6 @@ class LaboratorioCompletoManager {
                 </div>
                 <div class="modal-body">
                     <div class="os-detalhes-completo">
-                        <!-- Informações Básicas -->
                         <div class="detalhes-section">
                             <h4>Informações Gerais</h4>
                             <div class="detalhes-grid">
@@ -403,7 +413,6 @@ class LaboratorioCompletoManager {
                             </div>
                         </div>
 
-                        <!-- Progresso -->
                         <div class="detalhes-section">
                             <h4>Andamento da Produção</h4>
                             <div class="progresso-detalhado">
@@ -419,7 +428,6 @@ class LaboratorioCompletoManager {
                             </div>
                         </div>
 
-                        <!-- Especificações -->
                         <div class="detalhes-section">
                             <h4>Especificações Técnicas</h4>
                             <div class="detalhes-grid">
@@ -450,7 +458,6 @@ class LaboratorioCompletoManager {
                             ` : ''}
                         </div>
 
-                        <!-- Receita -->
                         ${ordemServico.receitas ? `
                         <div class="detalhes-section">
                             <h4>Receita Oftalmológica</h4>
@@ -475,7 +482,6 @@ class LaboratorioCompletoManager {
                         </div>
                         ` : ''}
 
-                        <!-- Financeiro -->
                         <div class="detalhes-section">
                             <h4>Informações Financeiras</h4>
                             <div class="detalhes-grid">
@@ -663,7 +669,7 @@ class LaboratorioCompletoManager {
                             </div>
                             <div class="detalhe-item">
                                 <label>Eficiência do Laboratório:</label>
-                                <span>${relatorio.eficiencia}%</span>
+                                <span>${relatorio.eficiencia.toFixed(1)}%</span>
                             </div>
                             <div class="detalhe-item">
                                 <label>Taxa de Atraso:</label>
@@ -704,6 +710,87 @@ class LaboratorioCompletoManager {
             }
         });
     }
+
+    // --- INÍCIO: NOVOS MÉTODOS KANBAN ---
+
+    // NOVO: Método para renderizar a visualização Kanban
+    renderKanbanOS(ordens) {
+        const container = document.getElementById('kanban-os');
+        if (!container) return;
+
+        // Limpa o estado de "carregando"
+        container.innerHTML = '';
+        
+        const ordensPorEtapa = this.groupOrdensByEtapa(ordens);
+
+        // Configura o grid para o Kanban
+        container.style.display = 'grid';
+        container.style.gridTemplateColumns = `repeat(${this.etapasProducao.length}, minmax(280px, 1fr))`;
+        container.style.gap = '15px';
+
+        this.etapasProducao.forEach(etapa => {
+            const ordensNaEtapa = ordensPorEtapa[etapa] || [];
+            
+            const etapaHTML = `
+                <div class="kanban-col" style="min-width: 280px; background: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-top: 5px solid ${this.getEtapaColor(etapa)};">
+                    <div class="kanban-header" style="padding: 10px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+                        <h5 style="margin: 0; color: ${this.getEtapaColor(etapa)}; font-size: 1.1em;">${this.getEtapaIcon(etapa)} ${this.getEtapaLabel(etapa)}</h5>
+                        <small style="background: #eee; padding: 2px 8px; border-radius: 4px; font-weight: bold;">${ordensNaEtapa.length} OS</small>
+                    </div>
+                    <div class="kanban-body" id="kanban-body-${etapa}" style="padding: 10px; overflow-y: auto; max-height: 60vh;">
+                        ${ordensNaEtapa.length > 0 ? ordensNaEtapa.map(os => this.renderKanbanItem(os)).join('') : 
+                            '<div style="color: #666; text-align: center; padding: 10px; font-size: 0.9em;">Nenhuma OS nesta etapa.</div>'}
+                    </div>
+                </div>
+            `;
+            container.innerHTML += etapaHTML;
+        });
+    }
+
+    // NOVO: Método auxiliar para agrupar ordens por etapa
+    groupOrdensByEtapa(ordens) {
+        return ordens.reduce((acc, os) => {
+            // Garante que o status 'pronto' vá para a última coluna do Kanban
+            const statusKey = os.status === 'pronto' ? 'pronto' : os.status;
+            (acc[statusKey] = acc[statusKey] || []).push(os);
+            return acc;
+        }, {});
+    }
+    
+    // NOVO: Método auxiliar para renderizar um item do Kanban
+    renderKanbanItem(os) {
+        return `
+            <div class="kanban-item" data-os-id="${os.id}" style="padding: 10px; margin-bottom: 8px; background: #fff5f5; border-left: 3px solid ${this.getEtapaColor(os.status)}; border-radius: 6px; box-shadow: 0 1px 2px rgba(0,0,0,0.1); cursor: pointer;">
+                <strong style="display: block;">OS #${os.numero_os}</strong>
+                <small style="display: block; color: #333; margin-bottom: 5px;">Cliente: ${os.clientes.nome}</small>
+                <small style="color: ${this.isPrazoAtrasado(os) ? '#d32f2f' : '#666'}; font-weight: ${this.isPrazoAtrasado(os) ? 'bold' : 'normal'};">
+                    <i class="fas fa-clock"></i> Prazo: ${os.prazo_entrega ? new Date(os.prazo_entrega).toLocaleDateString('pt-BR') : 'N/A'}
+                </small>
+                <div style="margin-top: 8px; display: flex; justify-content: space-between; border-top: 1px dashed #eee; padding-top: 5px;">
+                    <button class="btn btn-sm btn-info" onclick="laboratorioCompletoManager.verDetalhesOS('${os.id}')" style="padding: 3px 8px; font-size: 0.7em;">Detalhes</button>
+                    ${os.status !== 'pronto' ? `<button class="btn btn-sm btn-primary" onclick="laboratorioCompletoManager.avancarEtapa('${os.id}')" style="padding: 3px 8px; font-size: 0.7em;">Avançar</button>` : `<span style="font-size: 0.7em; color: ${this.getEtapaColor(os.status)}; font-weight: bold;">PRONTA</span>`}
+                </div>
+            </div>
+        `;
+    }
+    
+    // NOVO: Método auxiliar para cor das etapas (para o Kanban)
+    getEtapaColor(etapa) {
+        const colors = {
+            'recebimento': '#2196F3', // Azul (Info)
+            'analise': '#FF9800',     // Laranja (Warning)
+            'desmontagem': '#9C27B0', // Roxo
+            'surfassagem': '#795548', // Marrom
+            'montagem': '#4CAF50',    // Verde (Success)
+            'polimento': '#00BCD4',   // Ciano
+            'limpeza': '#3F51B5',     // Indigo
+            'controle_qualidade': '#FFEB3B', // Amarelo
+            'pronto': '#d32f2f'       // Vermelho (Pronto para Entrega)
+        };
+        return colors[etapa] || '#607D8B';
+    }
+
+    // --- FIM: NOVOS MÉTODOS KANBAN ---
 
     // Métodos auxiliares
     getTipoServicoLabel(tipo) {

@@ -1,0 +1,89 @@
+<div class="dashboard-header">
+    <h2>Bem-vindo ao Sistema Óticas Avelar</h2>
+    <p>Painel de controle e métricas do negócio</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+        <div class="stat-info">
+            <h3 id="vendas-hoje">0</h3>
+            <p>Vendas Hoje</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-users"></i>
+        </div>
+        <div class="stat-info">
+            <h3 id="clientes-total">0</h3>
+            <p>Total Clientes</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-boxes"></i>
+        </div>
+        <div class="stat-info">
+            <h3 id="estoque-baixo">0</h3>
+            <p>Estoque Baixo</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-dollar-sign"></i>
+        </div>
+        <div class="stat-info">
+            <h3 id="faturamento-mes">R$ 0</h3>
+            <p>Faturamento Mês</p>
+        </div>
+    </div>
+</div>
+
+<div class="quick-actions">
+    <button class="quick-btn" onclick="dashboard.loadModule('vendas')">
+        <i class="fas fa-cash-register"></i>
+        <span>Nova Venda (PDV)</span>
+    </button>
+    <button class="quick-btn" onclick="dashboard.loadModule('clientes')">
+        <i class="fas fa-user-plus"></i>
+        <span>Cadastrar Cliente</span>
+    </button>
+    <button class="quick-btn" onclick="dashboard.loadModule('estoque')">
+        <i class="fas fa-box-open"></i>
+        <span>Gerenciar Estoque</span>
+    </button>
+    <button class="quick-btn" onclick="dashboard.loadModule('receitas')">
+        <i class="fas fa-file-medical"></i>
+        <span>Cadastrar Receita</span>
+    </button>
+</div>
+
+<div class="content-row" style="margin-top: 30px;">
+    <div class="content-col">
+        <div class="card">
+            <div class="card-header">
+                <h3>📊 Vendas Recentes</h3>
+            </div>
+            <div class="card-body">
+                <div id="vendas-recentes-list">
+                    <div class="loading">Carregando vendas...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-col">
+        <div class="card">
+            <div class="card-header">
+                <h3>⚠️ Alertas de Estoque</h3>
+            </div>
+            <div class="card-body">
+                <div id="alertas-estoque-list">
+                    <div class="loading">Carregando alertas...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

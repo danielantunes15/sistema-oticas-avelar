@@ -1,0 +1,88 @@
+<div class="module-header">
+    <h2>💰 Gestão Financeira</h2>
+    <p>Controle de receitas, despesas e fluxo de caixa</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon" style="background: #4CAF50;">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+        <div class="stat-info">
+            <h3 id="total-receitas">R$ 0</h3>
+            <p>Total Receitas</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: #f44336;">
+            <i class="fas fa-arrow-down"></i>
+        </div>
+        <div class="stat-info">
+            <h3 id="total-despesas">R$ 0</h3>
+            <p>Total Despesas</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: #2196F3;">
+            <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="stat-info">
+            <h3 id="saldo-mes">R$ 0</h3>
+            <p>Saldo do Mês</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background: #FF9800;">
+            <i class="fas fa-clock"></i>
+        </div>
+        <div class="stat-info">
+            <h3 id="contas-receber">R$ 0</h3>
+            <p>Contas a Receber</p>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Movimentações Financeiras</h3>
+        <div class="header-actions">
+            <select id="filtro-tipo" style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; margin-right: 10px;">
+                <option value="todos">Todos os Tipos</option>
+                <option value="receita">Receitas</option>
+                <option value="despesa">Despesas</option>
+            </select>
+            <select id="filtro-status" style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; margin-right: 10px;">
+                <option value="todos">Todos Status</option>
+                <option value="pendente">Pendentes</option>
+                <option value="pago">Pagas</option>
+                <option value="vencido">Vencidas</option>
+            </select>
+            <button class="btn btn-primary" id="btn-nova-movimentacao">
+                <i class="fas fa-plus"></i> Nova Movimentação
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Tipo</th>
+                        <th>Categoria</th>
+                        <th>Valor</th>
+                        <th>Vencimento</th>
+                        <th>Pagamento</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="financeiro-table-body">
+                    <tr>
+                        <td colspan="8" class="text-center">Carregando movimentações...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

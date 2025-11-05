@@ -1,0 +1,37 @@
+<div class="module-header">
+    <h2>👥 Gerenciamento de Clientes</h2>
+    <p>Cadastro e controle de clientes da ótica</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Lista de Clientes</h3>
+        <div class="header-actions">
+            <input type="text" id="btn-buscar-cliente" placeholder="Buscar cliente..." 
+                   style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; margin-right: 10px;">
+            <button class="btn btn-primary" id="btn-novo-cliente">
+                <i class="fas fa-plus"></i> Novo Cliente
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>E-mail</th>
+                        <th>Telefone</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="clientes-table-body">
+                    <tr>
+                        <td colspan="5" class="text-center">Carregando clientes...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

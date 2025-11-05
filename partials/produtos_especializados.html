@@ -1,0 +1,37 @@
+<div class="module-header">
+    <h2>👓 Produtos Especializados</h2>
+    <p>Catálogo completo de armações, lentes e acessórios</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Lista de Produtos</h3>
+        <div class="header-actions">
+            <input type="text" id="btn-buscar-produto" placeholder="Buscar produto..." 
+                   style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; margin-right: 10px;">
+            <button class="btn btn-primary" id="btn-novo-produto-especializado">
+                <i class="fas fa-plus"></i> Novo Produto
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Produto (Nome/Marca/SKU)</th>
+                        <th>Categoria</th>
+                        <th>Estoque</th>
+                        <th>Preço Venda</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="produtos-especializados-body">
+                    <tr>
+                        <td colspan="5" class="text-center">Carregando produtos...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

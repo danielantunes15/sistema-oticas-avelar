@@ -1,0 +1,77 @@
+<div class="module-header">
+    <h2>📦 Controle de Estoque</h2>
+    <p>Gerenciamento de produtos e inventário</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Produtos em Estoque</h3>
+        <div class="header-actions">
+            <select id="filtro-categoria" style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; margin-right: 10px;">
+                <option value="todos">Todas Categorias</option>
+                <option value="armacao">Armações</option>
+                <option value="lente">Lentes</option>
+                <option value="acessorio">Acessórios</option>
+            </select>
+            <button class="btn btn-warning" id="btn-ajustar-estoque">
+                <i class="fas fa-cogs"></i> Ajustar Estoque
+            </button>
+            <button class="btn btn-primary" id="btn-novo-produto">
+                <i class="fas fa-plus"></i> Novo Produto
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="produtos">Produtos</button>
+            <button class="tab-btn" data-tab="movimentacoes">Movimentações</button>
+        </div>
+
+        <div class="tab-content">
+            <div id="tab-produtos" class="tab-pane active">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Categoria</th>
+                                <th>Estoque</th>
+                                <th>Estoque Mín.</th>
+                                <th>Preço Custo</th>
+                                <th>Preço Venda</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="estoque-table-body">
+                            <tr>
+                                <td colspan="7" class="text-center">Carregando produtos...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="tab-movimentacoes" class="tab-pane">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Tipo</th>
+                                <th>Quantidade</th>
+                                <th>Saldo</th>
+                                <th>Motivo</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody id="movimentacoes-table-body">
+                            <tr>
+                                <td colspan="6" class="text-center">Nenhuma movimentação registrada</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

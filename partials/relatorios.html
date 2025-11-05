@@ -1,0 +1,56 @@
+<div class="module-header">
+    <h2>📊 Relatórios e Analytics</h2>
+    <p>Relatórios avançados e métricas do negócio</p>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3>Filtros do Relatório</h3>
+        <div class="header-actions">
+            <input type="date" id="filtro-data-inicio" style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; margin-right: 10px;">
+            <input type="date" id="filtro-data-fim" style="padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; margin-right: 10px;">
+            <button class="btn btn-primary" id="btn-gerar-relatorio">
+                <i class="fas fa-chart-bar"></i> Gerar Relatório
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="content-row">
+    <div class="content-col">
+        <div class="card">
+            <div class="card-header">
+                <h3>📈 Vendas por Período</h3>
+            </div>
+            <div class="card-body">
+                <div id="vendas-periodo">
+                    <div class="loading">Carregando dados de vendas...</div>
+                </div>
+                <canvas id="grafico-vendas" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="content-col">
+        <div class="card">
+            <div class="card-header">
+                <h3>💰 Métricas Financeiras</h3>
+            </div>
+            <div class="card-body">
+                <div id="metricas-financeiras">
+                    <div class="loading">Carregando métricas...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card" style="margin-top: 20px;">
+    <div class="card-header">
+        <h3>🏆 Produtos Mais Vendidos</h3>
+    </div>
+    <div class="card-body">
+        <div id="produtos-mais-vendidos">
+            <div class="loading">Carregando produtos mais vendidos...</div>
+        </div>
+    </div>
+</div>
