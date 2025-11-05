@@ -1,0 +1,50 @@
+<div class="module-header">
+    <h2>📄 Gerador de Orçamentos</h2>
+    <p>Crie e gerencie orçamentos para clientes</p>
+</div>
+
+<div class="pdv-container">
+    <div class="pdv-layout">
+        <div class="pdv-painel-produtos">
+            <div class="painel-header">
+                <h3>Buscar Produtos</h3>
+                <div class="busca-produto">
+                    <input type="text" id="busca-produto-orcamento" placeholder="Buscar produto...">
+                </div>
+            </div>
+            <div id="resultados-busca-orcamento" class="resultados-busca">
+                <div class="empty-state">Digite para buscar produtos</div>
+            </div>
+        </div>
+
+        <div class="pdv-carrinho">
+            <div class="carrinho-header">
+                <h3>Itens do Orçamento</h3>
+                <button class="btn btn-success" id="btn-salvar-orcamento">
+                    <i class="fas fa-save"></i> Salvar Orçamento
+                </button>
+            </div>
+            
+            <div class="form-group" style="padding: 10px; background: #f9f9f9; border-radius: 6px; margin-bottom: 10px;">
+                <label for="orcamento-cliente-id">Cliente</label>
+                <select id="orcamento-cliente-id" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px;">
+                    <option value="">Selecione um cliente...</option>
+                </select>
+            </div>
+            
+            <div id="orcamento-itens" class="carrinho-itens">
+                <div class="empty-state">Nenhum item adicionado</div>
+            </div>
+            
+            <div class="carrinho-total">
+                <strong>Total: <span id="total-orcamento">R$ 0,00</span></strong>
+            </div>
+
+            <div class="carrinho-acoes">
+                <button class="btn btn-warning" onclick="orcamentosManager.limparOrcamento()">
+                    <i class="fas fa-trash"></i> Limpar Itens
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

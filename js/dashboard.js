@@ -19,9 +19,13 @@ class DashboardManager {
             // Módulos adicionados
             'produtos_especializados': { html: 'partials/produtos_especializados.html', js: 'js/produtos-especializado.js', init: 'initProdutosEspecializado' },
             'ordens_servico': { html: 'partials/ordens_servico.html', js: 'js/laboratorio-completo.js', init: 'initLaboratorioCompleto' }, // Reutiliza JS
-            'etapas_os': { html: 'partials/etapas_os.html', js: 'js/laboratorio-completo.js', init: 'initLaboratorioCompleto' } // Reutiliza JS
+            'etapas_os': { html: 'partials/etapas_os.html', js: 'js/laboratorio-completo.js', init: 'initLaboratorioCompleto' }, // Reutiliza JS
             
-            // Módulos existentes do projeto (mapeados por segurança)
+            // INÍCIO NOVOS MÓDULOS
+            'orcamentos': { html: 'partials/orcamentos.html', js: 'js/orcamentos.js', init: 'initOrcamentos' },
+            'cadastros': { html: 'partials/cadastros.html', js: 'js/cadastros.js', init: 'initCadastros' }
+            // FIM NOVOS MÓDULOS
+            
             // (Adicione outros JS se necessário)
         };
         
@@ -168,7 +172,23 @@ class DashboardManager {
     }
 
     updatePageTitle(moduleName) {
-        const title = this.moduleConfig[moduleName]?.title || moduleName.charAt(0).toUpperCase() + moduleName.slice(1);
+        // Títulos para o <title> da página
+        const titles = {
+            'dashboard': 'Dashboard',
+            'clientes': 'Clientes',
+            'vendas': 'Vendas',
+            'estoque': 'Estoque',
+            'financeiro': 'Financeiro',
+            'receitas': 'Receitas',
+            'laboratorio': 'Laboratório',
+            'produtos_especializados': 'Produtos',
+            'ordens_servico': 'Ordens de Serviço',
+            'etapas_os': 'Etapas O.S.',
+            'orcamentos': 'Orçamentos',
+            'cadastros': 'Cadastros',
+            'relatorios': 'Relatórios'
+        };
+        const title = titles[moduleName] || moduleName.charAt(0).toUpperCase() + moduleName.slice(1);
         document.title = `${title} - Óticas Avelar`;
     }
 }
@@ -187,8 +207,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // Funções globais para uso nos módulos (Modal Helpers)
-// (Movidas de volta para o core, pois js/components/ foi descartado na nova arquitetura)
-
 window.showSuccess = function(message) {
     alert('✅ ' + (message || "Operação realizada com sucesso!"));
 };
